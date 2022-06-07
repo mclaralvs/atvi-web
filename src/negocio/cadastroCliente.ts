@@ -59,7 +59,7 @@ export default class CadastroCliente extends Cadastro {
 
         for (var x = 1; x <= qtdTel; x++ ) {
             let ddd = this.entrada.receberTexto(`Por favor, informe o DDD: `) 
-            let numero = this.entrada.receberTexto(`Por favor, informe número telefônico `)
+            let numero = this.entrada.receberTexto(`Por favor, informe número telefônico: `)
 
             let tel = new Telefone (ddd, numero)
             cliente.getTelefones.push(tel)

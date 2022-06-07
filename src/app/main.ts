@@ -7,6 +7,8 @@ import ListagemClientes from "../negocio/listagemClientes";
 import ListagemProdutos from "../negocio/listagemProdutos";
 import ListagemServicos from "../negocio/listagemServicos";
 import ExcluirCliente from "../negocio/excluirCliente"
+import ExcluirProduto from "../negocio/excluirProduto";
+import ExcluirServico from "../negocio/excluirServicos";
 
 console.log(`Bem-vindo ao cadastro de clientes do Grupo World Beauty`)
 let empresa = new Empresa()
@@ -19,8 +21,10 @@ while (execucao) {
     console.log(`3 - Excluir um cliente`);
     console.log(`4 - Cadastrar produto`);
     console.log(`5 - Listar todos os produtos`);
-    console.log(`6 - Cadastrar produto`);
-    console.log(`7 - Listar todos os produtos`);
+    console.log(`6 - Excluir um produto`);
+    console.log(`7 - Cadastrar serviço`);
+    console.log(`8 - Listar todos os serviços`);
+    console.log(`9 - Excluir um serviço`);
     console.log(`0 - Sair`);
 
     let entrada = new Entrada()
@@ -47,13 +51,21 @@ while (execucao) {
             let listagemProdutos = new ListagemProdutos(empresa.getProdutos)
             listagemProdutos.listar()
             break;
-        case 6:
+        case 6: 
+            let excluirProduto = new ExcluirProduto(empresa.getProdutos)
+            excluirProduto.excluir()
+            break;
+        case 7:
             let cadastroServico = new CadastroServico(empresa.getServicos)
             cadastroServico.cadastrar()
             break;
-        case 7:
+        case 8:
             let listagemServicos = new ListagemServicos(empresa.getServicos)
             listagemServicos.listar()
+            break;
+        case 9:
+            let excluirServico = new ExcluirServico(empresa.getServicos)
+            excluirServico.excluir()
             break;
         case 0:
             execucao = false

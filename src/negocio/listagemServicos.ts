@@ -14,7 +14,7 @@ export default class ListagemServicos extends Listagem {
             
             console.log(`Preço: ${servico.getPrecoServico}`);
 
-            console.log(`-----------------------`);            
+            console.log(`--------------------------------------`);          
         })        
     }
 }

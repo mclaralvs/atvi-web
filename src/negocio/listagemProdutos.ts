@@ -14,7 +14,7 @@ export default class ListagemProdutos extends Listagem {
 
             console.log(`Preço: ${produto.precoProduto}`);
 
-            console.log(`-----------------------`);
+            console.log(`--------------------------------------`);
         }) 
     }
 }

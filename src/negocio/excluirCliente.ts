@@ -12,7 +12,7 @@ export default class ExcluirCliente extends Excluir {
     }
     public excluir(): void {
         var cpf = this.entrada.receberTexto('Insira o CPF de quem quer excluir: ')
-        
+
         var excluirCliente = (cpf) => {
             for (let index = 0; index < this.clientes.length; index++) {
                 if (this.clientes[index].getCpf.getValor == cpf) {
@@ -21,5 +21,6 @@ export default class ExcluirCliente extends Excluir {
             }
         }
         excluirCliente(cpf)
+        console.log(`--------------------------------------`);
     }
 }
