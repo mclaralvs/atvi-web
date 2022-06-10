@@ -9,6 +9,8 @@ import ListagemServicos from "../negocio/listagemServicos";
 import ExcluirCliente from "../negocio/excluirCliente"
 import ExcluirProduto from "../negocio/excluirProduto";
 import ExcluirServico from "../negocio/excluirServicos";
+import ComprarProduto from "../negocio/comprarProduto"
+import AtualizarCliente from "../negocio/atualizarCliente";
 
 console.log(`Bem-vindo ao cadastro de clientes do Grupo World Beauty`)
 let empresa = new Empresa()
@@ -16,19 +18,38 @@ let execucao = true
 
 while (execucao) {
     console.log(`Opções:`);
+    console.log(`--------------------------------------`);
+    
+    console.log(`CLIENTE`);
     console.log(`1 - Cadastrar cliente`);
     console.log(`2 - Listar todos os clientes`);
-    console.log(`3 - Excluir um cliente`);
-    console.log(`4 - Cadastrar produto`);
-    console.log(`5 - Listar todos os produtos`);
-    console.log(`6 - Excluir um produto`);
-    console.log(`7 - Cadastrar serviço`);
-    console.log(`8 - Listar todos os serviços`);
-    console.log(`9 - Excluir um serviço`);
+    console.log(`3 - Atualizar um cliente`);
+    console.log(`4 - Excluir um cliente\n`);
+
+    console.log(`PRODUTO`);
+    console.log(`5 - Cadastrar produto`);
+    console.log(`6 - Listar todos os produtos`);
+    console.log(`7 - Atualizar um cliente`);
+    console.log(`8 - Excluir um produto\n`);
+
+    console.log(`SERVIÇOS`);
+    console.log(`9 - Cadastrar serviço`);
+    console.log(`10 - Listar todos os serviços`);
+    console.log(`11 - Atualizar um cliente`);
+    console.log(`12 - Excluir um serviço\n`);
+
+    console.log(`PEDIDOS`);
+    console.log(`13. Registrar pedido de produtos`);
+    console.log(`14. Listar pedidos de produtos`);
+    console.log(`15. Registrar pedido de serviços`);
+    console.log(`16. Listar pedidos de serviços`);
+
     console.log(`0 - Sair`);
 
     let entrada = new Entrada()
     let opcao = entrada.receberNumero(`Por favor, escolha uma opção: `)
+
+    console.log(`--------------------------------------`);
 
     switch (opcao) {
         case 1:
@@ -40,32 +61,44 @@ while (execucao) {
             listagem.listar()
             break;
         case 3:
+            let atualizar = new AtualizarCliente(empresa.getClientes)
+            atualizar.atualizar()
+            break;
+        case 4:
             let excluir = new ExcluirCliente(empresa.getClientes)
             excluir.excluir()
             break;
-        case 4:
+        case 5:
             let cadastroProduto = new CadastroProduto(empresa.getProdutos)
             cadastroProduto.cadastrar()
             break;
-        case 5:
+        case 6:
             let listagemProdutos = new ListagemProdutos(empresa.getProdutos)
             listagemProdutos.listar()
             break;
-        case 6: 
+        /*case 7:
+            ATUALIZAR PRODUTO*/
+        case 8: 
             let excluirProduto = new ExcluirProduto(empresa.getProdutos)
             excluirProduto.excluir()
             break;
-        case 7:
+        case 9:
             let cadastroServico = new CadastroServico(empresa.getServicos)
             cadastroServico.cadastrar()
             break;
-        case 8:
+        case 10:
             let listagemServicos = new ListagemServicos(empresa.getServicos)
             listagemServicos.listar()
             break;
-        case 9:
+        /*case 11:
+            ATUALIZAR SERVIÇO*/
+        case 12:
             let excluirServico = new ExcluirServico(empresa.getServicos)
             excluirServico.excluir()
+            break;
+        case 13:
+            //let comprarProduto = new ComprarProduto()
+            //comprarProduto.comprar()
             break;
         case 0:
             execucao = false
