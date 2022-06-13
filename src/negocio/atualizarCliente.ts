@@ -17,10 +17,11 @@ export default class AtualizarCliente extends Atualizar {
     public atualizar(): void {
         let cpf = this.entrada.receberTexto('Insira o CPF de quem quer atualizar: ')
         var atualizarCliente = (cpf) => {
-            for (let index = 0; index < this.clientes.length; index++) {
-                if (this.clientes[index].getCpf.getValor == cpf) {
+            for (let indexCliente = 0; indexCliente < this.clientes.length; indexCliente++) {
+                if (this.clientes[indexCliente].getCpf.getValor == cpf) {
                     let operacao = true
-                    let alvo = this.clientes[index]
+                    let alvo = this.clientes[indexCliente]
+                    console.log(alvo.getTelefones);
                     while(operacao){
                         console.log(`--------------------------------------`);
                         console.log(`Escolha a opção que quer atualizar:`);
@@ -29,22 +30,22 @@ export default class AtualizarCliente extends Atualizar {
                         console.log(`3 - Gênero`);
                         console.log(`4 - Novo RG`);
                         console.log(`5 - Novo Telefone`);
-                        console.log(`0 - Sair`);
-
+                        console.log(`0 - Voltar`);
+                        
                         let opcao = this.entrada.receberNumero('Insira qual informação será alterada: ')
 
                         switch(opcao) {
                             case 1:
                                 let nome = this.entrada.receberTexto('Insira o novo nome: ')
-                                this.clientes[index].nome = nome
+                                alvo.nome = nome
                                 break;
                             case 2:
                                 let nomeSocial = this.entrada.receberTexto('Insira o novo nome social: ');
-                                this.clientes[index].nomeSocial = nomeSocial;
+                                alvo.nomeSocial = nomeSocial;
                                 break;
                             case 3:
-                                let genero = this.entrada.receberTexto('Insira o novo gênero')
-                                this.clientes[index].atualizarGenero = genero;
+                                let genero = this.entrada.receberTexto('Insira o novo gênero: ')
+                                alvo.atualizarGenero = genero;
                                 break;                       
                             case 4:
                                 let rgNum = this.entrada.receberTexto('Insira o novo rg')
@@ -56,15 +57,41 @@ export default class AtualizarCliente extends Atualizar {
                                 let diaRG = new Number(partesDataRG[0].valueOf()).valueOf()
                                 let dataEmissaoRG = new Date(anoRG, mesRG, diaRG)  
                                 let rg = new RG(rgNum,dataEmissaoRG)
-                                this.clientes[index].getRgs.push(rg)
+                                alvo.getRgs.push(rg)
                             case 5:
                                 let ddd = this.entrada.receberTexto(`Por favor, informe o DDD: `) 
                                 let numero = this.entrada.receberTexto(`Por favor, informe número telefônico: `)
                                 let tel = new Telefone (ddd, numero)
-                                this.clientes[0].getTelefones.push(tel)
-                                let escolha = this.entrada.receberTexto(`'Deletar os números antigos S = sim N = não': `)
+                                alvo.getTelefones.push(tel)
+                                let escolha = this.entrada.receberTexto('Deletar algum número antigo ? S para sim e N para não: ')
                                 if (escolha.toUpperCase() == 'S') {
-                                    this.clientes[0].getTelefones
+                                    let menuTel = true
+                                    while(menuTel){
+                                        console.log("1 - Deletar outro número");
+                                        console.log("10 - Voltar");
+                                        
+                                        let opcaoMenuTel = this.entrada.receberNumero("")
+                                        switch(opcaoMenuTel){
+                                            case 1:
+                                                for (let index = 0; index < alvo.getTelefones.length; index++) {
+                                                    console.log(`Opção ${index} - ${alvo[0].getTelefones[0]}`)
+                                    
+                                                }
+                                                console.log("----------------------------------------------------------------------------")
+                                                
+                                                
+                                                let opcaoTel =  this.entrada.receberNumero("Digite a opção desejada.")
+                                                alvo.getTelefones.splice(opcaoTel,1)
+                                                break;
+                                            case 10:
+                                                menuTel = false
+                                                break;
+                                        }
+                                      
+                                    }
+                                }
+                                else{
+                                    break;
                                 }    
                                                               
                             case 0:
