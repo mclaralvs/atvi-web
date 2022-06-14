@@ -11,6 +11,7 @@ import ExcluirProduto from "../negocio/excluirProduto";
 import ExcluirServico from "../negocio/excluirServicos";
 import ComprarProduto from "../negocio/comprarProduto"
 import AtualizarCliente from "../negocio/atualizarCliente";
+import AtualizarProduto from "../negocio/atualizarProduto";
 
 console.log(`Bem-vindo ao cadastro de clientes do Grupo World Beauty`)
 let empresa = new Empresa()
@@ -19,24 +20,24 @@ let execucao = true
 while (execucao) {
     console.log(`Opções:`);
     console.log(`--------------------------------------`);
-    
+
     console.log(`CLIENTE`);
-    console.log(`1 - Cadastrar cliente`);
-    console.log(`2 - Listar todos os clientes`);
-    console.log(`3 - Atualizar um cliente`);
-    console.log(`4 - Excluir um cliente\n`);
+    console.log(`1. Cadastrar cliente`);
+    console.log(`2. Listar todos os clientes`);
+    console.log(`3. Atualizar um cliente`);
+    console.log(`4. Excluir um cliente\n`);
 
     console.log(`PRODUTO`);
-    console.log(`5 - Cadastrar produto`);
-    console.log(`6 - Listar todos os produtos`);
-    console.log(`7 - Atualizar um cliente`);
-    console.log(`8 - Excluir um produto\n`);
+    console.log(`5. Cadastrar produto`);
+    console.log(`6. Listar todos os produtos`);
+    console.log(`7. Atualizar um produto`);
+    console.log(`8. Excluir um produto\n`);
 
     console.log(`SERVIÇOS`);
-    console.log(`9 - Cadastrar serviço`);
-    console.log(`10 - Listar todos os serviços`);
-    console.log(`11 - Atualizar um cliente`);
-    console.log(`12 - Excluir um serviço\n`);
+    console.log(`9. Cadastrar serviço`);
+    console.log(`10. Listar todos os serviços`);
+    console.log(`11. Atualizar um serviço`);
+    console.log(`12. Excluir um serviço\n`);
 
     console.log(`PEDIDOS`);
     console.log(`13. Registrar pedido de produtos`);
@@ -44,7 +45,7 @@ while (execucao) {
     console.log(`15. Registrar pedido de serviços`);
     console.log(`16. Listar pedidos de serviços`);
 
-    console.log(`0 - Sair`);
+    console.log(`0. Sair`);
 
     let entrada = new Entrada()
     let opcao = entrada.receberNumero(`Por favor, escolha uma opção: `)
@@ -76,9 +77,10 @@ while (execucao) {
             let listagemProdutos = new ListagemProdutos(empresa.getProdutos)
             listagemProdutos.listar()
             break;
-        /*case 7:
-            ATUALIZAR PRODUTO*/
-        case 8: 
+        case 7:
+            let atualizarProduto = new AtualizarProduto(empresa.getProdutos)
+            atualizarProduto.atualizar()
+        case 8:
             let excluirProduto = new ExcluirProduto(empresa.getProdutos)
             excluirProduto.excluir()
             break;
@@ -105,6 +107,6 @@ while (execucao) {
             console.log(`Até mais`)
             break;
         default:
-            console.log(`Operação não entendida :(`)
+            console.log(`Operação não entendida :`)
     }
 }
