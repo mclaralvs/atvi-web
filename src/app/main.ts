@@ -12,6 +12,7 @@ import ExcluirServico from "../negocio/excluirServicos";
 import ComprarProduto from "../negocio/comprarProduto"
 import AtualizarCliente from "../negocio/atualizarCliente";
 import AtualizarProduto from "../negocio/atualizarProduto";
+import AtualizarServico from "../negocio/atualizarServico";
 
 console.log(`Bem-vindo ao cadastro de clientes do Grupo World Beauty`)
 let empresa = new Empresa()
@@ -80,6 +81,7 @@ while (execucao) {
         case 7:
             let atualizarProduto = new AtualizarProduto(empresa.getProdutos)
             atualizarProduto.atualizar()
+            break;
         case 8:
             let excluirProduto = new ExcluirProduto(empresa.getProdutos)
             excluirProduto.excluir()
@@ -92,8 +94,10 @@ while (execucao) {
             let listagemServicos = new ListagemServicos(empresa.getServicos)
             listagemServicos.listar()
             break;
-        /*case 11:
-            ATUALIZAR SERVIÇO*/
+        case 11:
+            let atualizarServico = new AtualizarServico(empresa.getServicos)
+            atualizarServico.atualizar()
+            break;
         case 12:
             let excluirServico = new ExcluirServico(empresa.getServicos)
             excluirServico.excluir()

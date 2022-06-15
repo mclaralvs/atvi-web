@@ -1,23 +1,23 @@
-import Entrada from "../io/entrada"
-import Produto from "../modelo/produto"
-import Atualizar from "./atualizar"
+import Entrada from "../io/entrada";
+import Servico from "../modelo/servico";
+import Atualizar from "./atualizar";
 
-export default class AtualizarProduto extends Atualizar {
-    private produtos: Array<Produto>
+export default class AtualizarServico extends Atualizar {
+    private servicos: Array<Servico>
     private entrada: Entrada
-    constructor(produtos: Array<Produto>) {
+    constructor(servicos: Array<Servico>) {
         super()
-        this.produtos = produtos
+        this.servicos = servicos
         this.entrada = new Entrada()
     }
     public atualizar(): void {
-        let nome = this.entrada.receberTexto('Insira o nome do produto o qual quer atualizar: ')
-        var atualizarProduto = (nome) => {
-            for (let indexProduto = 0; indexProduto < this.produtos.length; indexProduto++) {
-                if (this.produtos[indexProduto].getNomeProduto == nome) {
+        let nome = this.entrada.receberTexto('Insira o nome do serviço o qual quer atualizar: ')
+        var atualizarServico = (nome) => {
+            for (let indexServico = 0; indexServico < this.servicos.length; indexServico++) {
+                if (this.servicos[indexServico].getNomeServico == nome) {
                     let operacao = true;
-                    const alvo = this.produtos[indexProduto]
-                    
+                    const alvo = this.servicos[indexServico]
+
                     while (operacao) {
                         console.log(`--------------------------------------`);
                         console.log(`Escolha a opção que quer atualizar:`);
@@ -28,12 +28,12 @@ export default class AtualizarProduto extends Atualizar {
                         let opcao = this.entrada.receberNumero('Insira qual informação será alterada: ')
                         switch (opcao) {
                             case 1:
-                                let nome = this.entrada.receberTexto('Insira o novo nome do produto: ')
-                                alvo.nomeProduto = nome
+                                let nome = this.entrada.receberTexto('Insira o novo nome do servico: ')
+                                alvo.nomeServico = nome
                                 break;
                             case 2:
-                                let precoProduto = this.entrada.receberNumero('Insira o novo preço do produto: ');
-                                alvo.precoProduto = precoProduto;
+                                let precoServico = this.entrada.receberNumero('Insira o novo preço do serviço: ');
+                                alvo.precoServico = precoServico;
                                 break;
                             case 0:
                                 operacao = false
@@ -45,7 +45,7 @@ export default class AtualizarProduto extends Atualizar {
                 }
             }
         }
-        atualizarProduto(nome)
+        atualizarServico(nome)
         console.log(`--------------------------------------`);
     }
 }
