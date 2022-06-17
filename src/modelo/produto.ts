@@ -5,10 +5,13 @@ export default class Produto {
         this.nomeProduto = nomeProduto
         this.precoProduto = precoProduto
     }
+
     public get getNomeProduto(): string {
         return this.nomeProduto
     }
+
     public get getPrecoProduto(): number {
         return this.precoProduto
     }
+
 }

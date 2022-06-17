@@ -9,12 +9,11 @@ export default class Cliente {
     public nomeSocial: string
     private cpf: CPF
     private rgs: Array<RG>
-    private genero: string    
+    public genero: string    
     private dataCadastro: Date
     private telefones: Array<Telefone>
     private produtosConsumidos: Array<Produto>
     private servicosConsumidos: Array<Servico>
-    static getProdutosConsumidos: Cliente[]
     constructor(nome: string, nomeSocial: string, cpf: CPF, genero: string) {
         this.nome = nome
         this.nomeSocial = nomeSocial
@@ -26,6 +25,7 @@ export default class Cliente {
         this.produtosConsumidos = []
         this.servicosConsumidos = []
     }
+
     public get getCpf(): CPF {
         return this.cpf
     }
@@ -33,6 +33,7 @@ export default class Cliente {
     public get getRgs(): Array<RG> {
         return this.rgs
     }
+
     public get getGenero(): String {
         return this.genero
     }
@@ -44,12 +45,15 @@ export default class Cliente {
     public get getDataCadastro(): Date {
         return this.dataCadastro
     }
+
     public get getTelefones(): Array<Telefone> {
         return this.telefones
     }
+
     public get getProdutosConsumidos(): Array<Produto> {
         return this.produtosConsumidos
     }
+
     public get getServicosConsumidos(): Array<Servico> {
         return this.servicosConsumidos
     }

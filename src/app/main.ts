@@ -14,6 +14,11 @@ import ComprarServico from "../negocio/comprarServicos";
 import AtualizarCliente from "../negocio/atualizarCliente";
 import AtualizarProduto from "../negocio/atualizarProduto";
 import AtualizarServico from "../negocio/atualizarServico";
+import ListagemPedidoProduto from "../negocio/listagemPedidoProduto";
+import ListagemPedidoServico from "../negocio/listagemPedidoServico";
+import ListagemClientesConsumiram from "../negocio/listagens/clientesMaisConsumiram";
+import ListagemClienteGenero from "../negocio/listagens/clientesGenero";
+import ListagemClientesMenosConsumiram from "../negocio/listagens/clientesMenosConsumiram";
 
 console.log(`Bem-vindo ao cadastro de clientes do Grupo World Beauty`)
 let empresa = new Empresa()
@@ -45,7 +50,14 @@ while (execucao) {
     console.log(`13. Registrar pedido de produtos`);
     console.log(`14. Listar pedidos de produtos`);
     console.log(`15. Registrar pedido de serviços`);
-    console.log(`16. Listar pedidos de serviços`);
+    console.log(`16. Listar pedidos de serviços\n`);
+
+    console.log(`LISTAGENS`);
+    console.log(`17. Top 10 clientes que mais consumiram (Quantidade)`);
+    console.log(`18. Top 10 clientes que menos consumiram (Quantidade)`);
+    console.log(`19. Lista de clientes por gênero`);
+    /*console.log(`19. Registrar pedido de serviços`);
+    console.log(`20. Listar pedidos de serviços`);*/
 
     console.log(`0. Sair`);
 
@@ -108,10 +120,28 @@ while (execucao) {
             comprarProduto.comprar()
             break;
         case 14:
+            let listarPedidoProduto = new ListagemPedidoProduto(empresa.getClientes)
+            listarPedidoProduto.listar()
             break;
         case 15:
             let comprarServico = new ComprarServico(empresa.getClientes,empresa.getServicos)
             comprarServico.comprar()
+            break;
+        case 16:
+            let listarPedidoServico = new ListagemPedidoServico(empresa.getClientes)
+            listarPedidoServico.listar()
+            break;
+        case 17:
+            let listarClientesConsumiram = new ListagemClientesConsumiram(empresa.getClientes)
+            listarClientesConsumiram.listar()
+            break;
+        case 18:
+            let listarClientesMenosConsumiram = new ListagemClientesMenosConsumiram(empresa.getClientes)
+            listarClientesMenosConsumiram.listar()
+            break;
+        case 19:
+            let listarClienteGenero = new ListagemClienteGenero(empresa.getClientes)
+            listarClienteGenero.listar()
             break;
         case 0:
             execucao = false
