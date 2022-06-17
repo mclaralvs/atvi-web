@@ -9,7 +9,8 @@ import ListagemServicos from "../negocio/listagemServicos";
 import ExcluirCliente from "../negocio/excluirCliente"
 import ExcluirProduto from "../negocio/excluirProduto";
 import ExcluirServico from "../negocio/excluirServicos";
-import ComprarProduto from "../negocio/comprarProduto"
+import ComprarProduto from "../negocio/comprarProduto";
+import ComprarServico from "../negocio/comprarServicos";
 import AtualizarCliente from "../negocio/atualizarCliente";
 import AtualizarProduto from "../negocio/atualizarProduto";
 import AtualizarServico from "../negocio/atualizarServico";
@@ -103,8 +104,14 @@ while (execucao) {
             excluirServico.excluir()
             break;
         case 13:
-            //let comprarProduto = new ComprarProduto()
-            //comprarProduto.comprar()
+            let comprarProduto = new ComprarProduto(empresa.getClientes,empresa.getProdutos)
+            comprarProduto.comprar()
+            break;
+        case 14:
+            break;
+        case 15:
+            let comprarServico = new ComprarServico(empresa.getClientes,empresa.getServicos)
+            comprarServico.comprar()
             break;
         case 0:
             execucao = false
