@@ -1,6 +1,6 @@
-import Cliente from "../modelo/cliente"
-import Entrada from "../io/entrada";
-import Excluir from "./excluir";
+import Cliente from "../../modelo/cliente"
+import Entrada from "../../io/entrada";
+import Excluir from "../excluir";
 
 export default class ExcluirCliente extends Excluir {
     private clientes: Array<Cliente>

@@ -1,24 +1,26 @@
 import Entrada from "../io/entrada";
 import Empresa from "../modelo/empresa"
-import CadastroCliente from "../negocio/cadastroCliente";
-import CadastroProduto from "../negocio/cadastroProduto";
-import CadastroServico from "../negocio/cadastroServico";
-import ListagemClientes from "../negocio/listagemClientes";
-import ListagemProdutos from "../negocio/listagemProdutos";
-import ListagemServicos from "../negocio/listagemServicos";
-import ExcluirCliente from "../negocio/excluirCliente"
-import ExcluirProduto from "../negocio/excluirProduto";
-import ExcluirServico from "../negocio/excluirServicos";
-import ComprarProduto from "../negocio/comprarProduto";
-import ComprarServico from "../negocio/comprarServicos";
-import AtualizarCliente from "../negocio/atualizarCliente";
-import AtualizarProduto from "../negocio/atualizarProduto";
-import AtualizarServico from "../negocio/atualizarServico";
-import ListagemPedidoProduto from "../negocio/listagemPedidoProduto";
-import ListagemPedidoServico from "../negocio/listagemPedidoServico";
+import CadastroCliente from "../negocio/cliente/cadastroCliente";
+import CadastroProduto from "../negocio/produto/cadastroProduto";
+import CadastroServico from "../negocio/servico/cadastroServico";
+import ListagemClientes from "../negocio/cliente/listagemClientes";
+import ListagemProdutos from "../negocio/produto/listagemProdutos";
+import ListagemServicos from "../negocio/servico/listagemServicos";
+import ExcluirCliente from "../negocio/cliente/excluirCliente"
+import ExcluirProduto from "../negocio/produto/excluirProduto";
+import ExcluirServico from "../negocio/servico/excluirServicos";
+import ComprarProduto from "../negocio/comprar/comprarProduto";
+import ComprarServico from "../negocio/comprar/comprarServicos";
+import AtualizarCliente from "../negocio/cliente/atualizarCliente";
+import AtualizarProduto from "../negocio/produto/atualizarProduto";
+import AtualizarServico from "../negocio/servico/atualizarServico";
+import ListagemPedidoProduto from "../negocio/comprar/listagemPedidoProduto";
+import ListagemPedidoServico from "../negocio/comprar/listagemPedidoServico";
 import ListagemClientesConsumiram from "../negocio/listagens/clientesMaisConsumiram";
 import ListagemClienteGenero from "../negocio/listagens/clientesGenero";
 import ListagemClientesMenosConsumiram from "../negocio/listagens/clientesMenosConsumiram";
+import ListagemMaisConsumidos from "../negocio/listagens/itensMaisConsumidos";
+import ListagemMaisConsumidosGenero from "../negocio/listagens/itensMaisConsumidosGenero";
 
 console.log(`Bem-vindo ao cadastro de clientes do Grupo World Beauty`)
 let empresa = new Empresa()
@@ -56,8 +58,8 @@ while (execucao) {
     console.log(`17. Top 10 clientes que mais consumiram (Quantidade)`);
     console.log(`18. Top 10 clientes que menos consumiram (Quantidade)`);
     console.log(`19. Lista de clientes por gênero`);
-    /*console.log(`19. Registrar pedido de serviços`);
-    console.log(`20. Listar pedidos de serviços`);*/
+    console.log(`20. Lista geral de itens mais consumidos`);
+    console.log(`21. Lista itens mais consumidos por gênero`);
 
     console.log(`0. Sair`);
 
@@ -142,6 +144,14 @@ while (execucao) {
         case 19:
             let listarClienteGenero = new ListagemClienteGenero(empresa.getClientes)
             listarClienteGenero.listar()
+            break;
+        case 20:
+            let listarItensConsumidos = new ListagemMaisConsumidos(empresa.getClientes, empresa.getProdutos, empresa.getServicos)
+            listarItensConsumidos.listar()
+            break;
+        case 21:
+            let listarItensConsumidosGenero = new ListagemMaisConsumidosGenero(empresa.getClientes, empresa.getProdutos, empresa.getServicos)
+            listarItensConsumidosGenero.listar()
             break;
         case 0:
             execucao = false

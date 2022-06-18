@@ -1,8 +1,8 @@
-import Entrada from "../io/entrada";
-import Cliente from "../modelo/cliente";
-import RG from "../modelo/rg";
-import Telefone from "../modelo/telefone";
-import Atualizar from "./atualizar";
+import Entrada from "../../io/entrada";
+import Cliente from "../../modelo/cliente";
+import RG from "../../modelo/rg";
+import Telefone from "../../modelo/telefone";
+import Atualizar from "../atualizar";
 
 export default class AtualizarCliente extends Atualizar {
     private clientes: Array<Cliente>

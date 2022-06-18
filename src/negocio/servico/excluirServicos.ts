@@ -1,6 +1,6 @@
-import Servico from "../modelo/servico";
-import Entrada from "../io/entrada";
-import Excluir from "./excluir";
+import Servico from "../../modelo/servico";
+import Entrada from "../../io/entrada";
+import Excluir from "../excluir";
 
 export default class ExcluirServico extends Excluir {
     private servicos: Array<Servico>

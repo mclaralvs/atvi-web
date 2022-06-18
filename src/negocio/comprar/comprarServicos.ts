@@ -1,16 +1,16 @@
-import Produto from "../modelo/produto";
-import Cliente from "../modelo/cliente";
-import Entrada from "../io/entrada";
-import Comprar from "./comprar";
+import Servico from "../../modelo/servico";
+import Cliente from "../../modelo/cliente";
+import Entrada from "../../io/entrada";
+import Comprar from "../comprar";
 
-export default class ComprarProduto extends Comprar {
+export default class ComprarServico extends Comprar {
     private clientes: Array<Cliente>
-    private produtos: Array<Produto>
+    private servicos: Array<Servico>
     private entrada: Entrada
-    constructor(clientes: Array<Cliente>, produtos: Array<Produto>) {
+    constructor(clientes: Array<Cliente>, servicos: Array<Servico>) {
         super()
         this.clientes = clientes
-        this.produtos = produtos
+        this.servicos = servicos
         this.entrada = new Entrada()
     }
     public comprar(): void {
@@ -26,12 +26,12 @@ export default class ComprarProduto extends Comprar {
                     let opcao = this.entrada.receberNumero('Escolha o que deseja fazer: ')
                     switch (opcao) {
                         case 1 :   
-                            for (let indexProduto = 0; indexProduto < this.produtos.length; indexProduto++) {
-                                console.log(indexProduto +" - " + this.produtos[indexProduto].getNomeProduto);                 
+                            for (let indexServicos = 0; indexServicos < this.servicos.length; indexServicos++) {
+                                console.log(indexServicos +" - " + this.servicos[indexServicos].getNomeServico);                 
                             }
-                            let produto = this.entrada.receberNumero('Insira o número do produto desejado: ')
-                            this.clientes[index].getProdutosConsumidos.push(this.produtos[produto])
-                            console.log(this.clientes[index].getProdutosConsumidos);
+                            let servico = this.entrada.receberNumero('Insira o número do serviço desejado: ')
+                            this.clientes[index].getServicosConsumidos.push(this.servicos[servico])
+                            console.log(this.clientes[index].getServicosConsumidos);
                             break;
                         case 0:
                             operacao = false

@@ -1,6 +1,6 @@
-import Produto from "../modelo/produto";
-import Entrada from "../io/entrada";
-import Excluir from "./excluir";
+import Produto from "../../modelo/produto";
+import Entrada from "../../io/entrada";
+import Excluir from "../excluir";
 
 export default class ExcluirProduto extends Excluir {
     private produtos: Array<Produto>

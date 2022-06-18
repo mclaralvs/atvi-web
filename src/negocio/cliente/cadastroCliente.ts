@@ -1,9 +1,9 @@
-import Entrada from "../io/entrada";
-import Cliente from "../modelo/cliente";
-import CPF from "../modelo/cpf";
-import RG from "../modelo/rg";
-import Telefone from "../modelo/telefone";
-import Cadastro from "./cadastro";
+import Entrada from "../../io/entrada";
+import Cliente from "../../modelo/cliente";
+import CPF from "../../modelo/cpf";
+import RG from "../../modelo/rg";
+import Telefone from "../../modelo/telefone";
+import Cadastro from "../cadastro";
 
 export default class CadastroCliente extends Cadastro {
     private clientes: Array<Cliente>
