@@ -14,6 +14,7 @@ export default class Cliente {
     private telefones: Array<Telefone>
     private produtosConsumidos: Array<Produto>
     private servicosConsumidos: Array<Servico>
+    public precoPedido: number = Number[0]
     constructor(nome: string, nomeSocial: string, cpf: CPF, genero: string) {
         this.nome = nome
         this.nomeSocial = nomeSocial

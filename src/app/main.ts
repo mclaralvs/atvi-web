@@ -21,6 +21,7 @@ import ListagemClienteGenero from "../negocio/listagens/clientesGenero";
 import ListagemClientesMenosConsumiram from "../negocio/listagens/clientesMenosConsumiram";
 import ListagemMaisConsumidos from "../negocio/listagens/itensMaisConsumidos";
 import ListagemMaisConsumidosGenero from "../negocio/listagens/itensMaisConsumidosGenero";
+import ListagemClientesMaisConsumiramValor from "../negocio/listagens/clientesMaisConsumiramValor";
 
 console.log(`Bem-vindo ao cadastro de clientes do Grupo World Beauty`)
 let empresa = new Empresa()
@@ -60,6 +61,7 @@ while (execucao) {
     console.log(`19. Lista de clientes por gênero`);
     console.log(`20. Lista geral de itens mais consumidos`);
     console.log(`21. Lista itens mais consumidos por gênero`);
+    console.log(`22. Top 5 clientes que mais consumiram (Valor)`);
 
     console.log(`0. Sair`);
 
@@ -152,6 +154,10 @@ while (execucao) {
         case 21:
             let listarItensConsumidosGenero = new ListagemMaisConsumidosGenero(empresa.getClientes, empresa.getProdutos, empresa.getServicos)
             listarItensConsumidosGenero.listar()
+            break;
+        case 22:
+            let listarClientesValor = new ListagemClientesMaisConsumiramValor(empresa.getClientes, empresa.getProdutos, empresa.getServicos)
+            listarClientesValor.listar()
             break;
         case 0:
             execucao = false

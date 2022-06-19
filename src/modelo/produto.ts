@@ -14,5 +14,4 @@ export default class Produto {
     public get getPrecoProduto(): number {
         return this.precoProduto
     }
-
 }
