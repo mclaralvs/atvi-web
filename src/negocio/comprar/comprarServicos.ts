@@ -29,9 +29,9 @@ export default class ComprarServico extends Comprar {
                             for (let indexServicos = 0; indexServicos < this.servicos.length; indexServicos++) {
                                 console.log(indexServicos +" - " + this.servicos[indexServicos].getNomeServico);                 
                             }
+                            
                             let servico = this.entrada.receberNumero('Insira o número do serviço desejado: ')
                             this.clientes[index].getServicosConsumidos.push(this.servicos[servico])
-                            console.log(this.clientes[index].getServicosConsumidos);
                             break;
                         case 0:
                             operacao = false

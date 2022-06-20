@@ -31,7 +31,6 @@ export default class ComprarProduto extends Comprar {
                             }
                             let produto = this.entrada.receberNumero('Insira o número do produto desejado: ')
                             this.clientes[index].getProdutosConsumidos.push(this.produtos[produto])
-                            console.log(this.clientes[index].getProdutosConsumidos);
                             break;
                         case 0:
                             operacao = false
