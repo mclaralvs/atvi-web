@@ -17,144 +17,124 @@ export default class ListagemMaisConsumidosGenero extends Listagem {
     public listar(): void {
         console.log('Listagem de Produtos/Serviços mais consumidos:');
 
-        const topProdutosFeminino: Array<Produto> = []
-        const topServicosFeminino: Array<Servico> = []
+        const topProdutosFeminino: {nome: string, valor: number , quantidade: number }[] = []
+        const topServicosFeminino: {nome: string, valor: number , quantidade: number }[] = []
 
-        const topProdutosMasculino: Array<Produto> = []
-        const topServicosMasculino: Array<Servico> = []
+        const topProdutosMasculino: {nome: string, valor: number , quantidade: number }[] = []
+        const topServicosMasculino: {nome: string, valor: number , quantidade: number }[] = []
   
         // PRODUTOS FEMININO
         this.produtos.forEach(produto => {
-            topProdutosFeminino.push(produto)
+            topProdutosFeminino.push({nome: produto.getNomeProduto, valor: produto.getPrecoProduto, quantidade: 0})
         })
 
-        topProdutosFeminino.forEach(prod => {
-            let qtdProduto = 0
-            
+        topProdutosFeminino.forEach(prod => {   
             this.clientes.forEach(cliente => {
-                cliente.getProdutosConsumidos.forEach(prodConsumido => {
-                    for (let indexProduto = 0; indexProduto < topProdutosFeminino.length; indexProduto++) {
-                        if (prodConsumido.nomeProduto == prod.nomeProduto) {
-                            if (cliente.genero.toUpperCase() == 'f' || cliente.genero.toUpperCase() == 'feminino') {
-                                qtdProduto += 1
-                            }
-                        }     
-                    }       
+                cliente.getProdutosConsumidos.forEach(prodConsumido => {       
+                        if (prodConsumido.nomeProduto == prod.nome) {
+                            if (cliente.genero.toUpperCase() == 'F' || cliente.genero.toUpperCase() == 'FEMININO') {
+                                prod.quantidade = prod.quantidade + 1
+                            }                 
+                    }      
                 })
             });
 
-            prod.qtdProduto = qtdProduto;
         })
         
-        topProdutosFeminino.sort((prod1, prod2) => (prod1.qtdProduto > prod2.qtdProduto) ? -1 : 1)
+        topProdutosFeminino.sort((prod1, prod2) => (prod1.quantidade > prod2.quantidade) ? -1 : 1)
             console.log(`PRODUTOS:`);
 
+            
             let ordemProdFeminino = 1;
 
             topProdutosFeminino.forEach(prod => {
-                console.log(`${ordemProdFeminino} - ${prod.nomeProduto}`);
+                console.log(`${ordemProdFeminino} - ${prod.nome}`);
                 ordemProdFeminino++;
         });
 
         // SERVIÇOS FEMININO
         this.servicos.forEach(servico => {
-            topServicosFeminino.push(servico)
+            topServicosFeminino.push({nome:servico.getNomeServico,valor:servico.getPrecoServico,quantidade:0})
         })
 
-        topServicosFeminino.forEach(serv => {
-            let qtdServico = 0
-            
+        topServicosFeminino.forEach(serv => {      
             this.clientes.forEach(cliente => {
-                cliente.getServicosConsumidos.forEach(servConsumido => {
-                    for (let indexServico = 0; indexServico < topServicosFeminino.length; indexServico++) {
-                        if (servConsumido.nomeServico == serv.nomeServico) {
-                            if (cliente.genero.toUpperCase() == 'f' || cliente.genero.toUpperCase() == 'feminino') {
-                                qtdServico += 1
+                cliente.getServicosConsumidos.forEach(servConsumido => { 
+                        if (servConsumido.nomeServico == serv.nome) {
+                            if (cliente.genero.toUpperCase() == 'F' || cliente.genero.toUpperCase() == 'FEMININO') {
+                                serv.quantidade = serv.quantidade + 1
                             }
-                        }     
-                    }       
+                        }                
                 })
             });
-            
-            serv.qtdServico = qtdServico;
+
         })
 
-        topServicosFeminino.sort((serv1, serv2) => (serv1.qtdServico > serv2.qtdServico) ? -1 : 1)
+        topServicosFeminino.sort((serv1, serv2) => (serv1.quantidade > serv2.quantidade) ? -1 : 1)
             console.log(`SERVIÇOS:`);
 
             let ordemServFeminino = 1;
 
             topServicosFeminino.forEach(serv => {
-                console.log(`${ordemServFeminino} - ${serv.nomeServico}`);
+                console.log(`${ordemServFeminino} - ${serv.nome}`);
                 ordemServFeminino++;
         });
 
 
         // PRODUTOS MASCULINO
         this.produtos.forEach(produto => {
-            topProdutosMasculino.push(produto)
+            topProdutosMasculino.push({nome: produto.getNomeProduto, valor: produto.getPrecoProduto, quantidade: 0})
         })
 
-        topProdutosMasculino.forEach(prod => {
-            let qtdProduto = 0
-            prod.qtdProduto = qtdProduto;
-            
+        topProdutosMasculino.forEach(prod => {           
             this.clientes.forEach(cliente => {
                 cliente.getProdutosConsumidos.forEach(prodConsumido => {
-                    for (let indexProduto = 0; indexProduto < topProdutosFeminino.length; indexProduto++) {
-                        if (prodConsumido.nomeProduto == prod.nomeProduto) {
-                            if (cliente.genero.toUpperCase() == 'm' || cliente.genero.toUpperCase() == 'masculino') {
-                                qtdProduto += 1
+                        if (prodConsumido.nomeProduto == prod.nome) {
+                            if (cliente.genero.toUpperCase() == 'M' || cliente.genero.toUpperCase() == 'MASCULINO') {
+                                prod.quantidade = prod.quantidade + 1
                             }
-                        }     
-                    }       
+                        }                         
                 })
             });
-
-            prod.qtdProduto = qtdProduto;
         })
         
-        topProdutosMasculino.sort((prod1, prod2) => (prod1.qtdProduto > prod2.qtdProduto) ? -1 : 1)
+        topProdutosMasculino.sort((prod1, prod2) => (prod1.quantidade > prod2.quantidade) ? -1 : 1)
             console.log(`PRODUTOS:`);
 
             let ordemProdMasculino = 1;
 
             topProdutosMasculino.forEach(prod => {
-                console.log(`${ordemProdMasculino} - ${prod.nomeProduto}`);
+                console.log(`${ordemProdMasculino} - ${prod.nome}`);
                 ordemProdMasculino++;
         });
 
         // SERVIÇOS FEMININO
         this.servicos.forEach(servico => {
-            topServicosMasculino.push(servico)
+            topServicosMasculino.push({nome:servico.getNomeServico,valor:servico.getPrecoServico,quantidade:0})
         })
 
         topServicosMasculino.forEach(serv => {
-            let qtdServico = 0
-            serv.qtdServico = qtdServico;
             
             this.clientes.forEach(cliente => {
                 cliente.getServicosConsumidos.forEach(servConsumido => {
                     for (let indexServico = 0; indexServico < topServicosMasculino.length; indexServico++) {
-                        if (servConsumido.nomeServico == serv.nomeServico) {
+                        if (servConsumido.nomeServico == serv.nome) {
                             if (cliente.genero.toUpperCase() == 'm' || cliente.genero.toUpperCase() == 'masculino') {
-                                qtdServico += 1
+                                serv.quantidade = serv.quantidade + 1
                             }
                         }     
                     }       
                 })
             });
-            
-            serv.qtdServico = qtdServico;
         })
 
-        topServicosMasculino.sort((serv1, serv2) => (serv1.qtdServico > serv2.qtdServico) ? -1 : 1)
+        topServicosMasculino.sort((serv1, serv2) => (serv1.quantidade > serv2.quantidade) ? -1 : 1)
             console.log(`SERVIÇOS:`);
 
             let ordemServMasculino = 1;
 
             topServicosMasculino.forEach(serv => {
-                console.log(`${ordemServMasculino} - ${serv.nomeServico}`);
+                console.log(`${ordemServMasculino} - ${serv.nome}`);
                 ordemServMasculino++;
         });
     }
